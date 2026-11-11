@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Автомастерская в Лысьве | Ремонт, диагностика, тюнинг</title>
+  <meta name="description" content="Автомастерская в Лысьве: диагностика, ремонт двигателя и ходовой, установка сигнализаций Pandora и StarLine, автоэлектрика, тюнинг квадроциклов. Ул. Орджоникидзе, 22г.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- Базовые настройки ---------- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; background-color: #f5f7fa; color: #1a1a2e; line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    
+    :root {
+      --dark-blue: #0b1a33;
+      --gold: #f5b81b;
+      --gold-light: #ffd966;
+      --white: #ffffff;
+      --light-bg: #eef2f7;
+    }
+
+    /* ---------- Шапка ---------- */
+    .header { background: var(--dark-blue); color: var(--white); padding: 15px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .header .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .logo { font-size: 1.8rem; font-weight: 800; color: var(--gold); letter-spacing: 1px; text-decoration: none; }
+    .logo span { color: var(--white); font-weight: 400; }
+    .header-contacts { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+    .header-phone { font-size: 1.4rem; font-weight: 700; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .header-phone:hover { color: var(--gold-light); }
+    .btn-whatsapp { background: #25d366; color: #fff; padding: 8px 16px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
+    .btn-whatsapp:hover { background: #1ebe5c; transform: scale(1.03); }
+    .btn-call { background: var(--gold); color: var(--dark-blue); padding: 8px 20px; border-radius: 30px; text-decoration: none; font-weight: 700; transition: 0.3s; font-size: 0.95rem; }
+    .btn-call:hover { background: var(--gold-light); transform: scale(1.03); }
+
+    /* ---------- Главный экран ---------- */
+    .hero { background: linear-gradient(135deg, var(--dark-blue) 0%, #1a3355 100%); color: var(--white); padding: 80px 0 70px; text-align: center; }
+    .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 15px; }
+    .hero h1 .gold { color: var(--gold); }
+    .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px; opacity: 0.9; }
+    .hero-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .hero .btn-primary { background: var(--gold); color: var(--dark-blue); padding: 14px 40px; font-weight: 700; font-size: 1.1rem; border-radius: 50px; text-decoration: none; transition: 0.3s; }
+    .hero .btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(245, 184, 27, 0.4); }
+    .hero .btn-secondary { background: transparent; border: 2px solid var(--gold); color: var(--gold); padding: 14px 40px; font-weight: 700; font-size: 1.1rem; border-radius: 50px; text-decoration: none; transition: 0.3s; }
+    .hero .btn-secondary:hover { background: var(--gold); color: var(--dark-blue); transform: translateY(-3px); }
+
+    /* ---------- Заголовки секций ---------- */
+    .section-title { text-align: center; font-size: 2.4rem; font-weight: 700; margin-bottom: 15px; color: var(--dark-blue); }
+    .section-title .gold { color: var(--gold); }
+    .section-subtitle { text-align: center; font-size: 1.1rem; color: #555; max-width: 700px; margin: 0 auto 50px; }
+
+    /* ---------- Услуги ---------- */
+    .services { padding: 70px 0; background: var(--white); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 30px; }
+    .service-item { background: var(--light-bg); padding: 25px 20px; border-radius: 16px; text-align: center; transition: 0.3s; border-bottom: 4px solid transparent; }
+    .service-item:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); border-bottom-color: var(--gold); }
+    .service-icon { font-size: 2.8rem; margin-bottom: 10px; }
+    .service-item h3 { font-size: 1.2rem; font-weight: 700; color: var(--dark-blue); margin-bottom: 8px; }
+    .service-item p { font-size: 0.95rem; color: #444; }
+
+    /* ---------- Преимущества и оплата ---------- */
+    .advantages { background: var(--light-bg); padding: 70px 0; }
+    .advantages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-top: 20px; }
+    .advantage-item { text-align: center; background: var(--white); padding: 30px 20px; border-radius: 16px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+    .advantage-item .icon { font-size: 2.5rem; display: block; margin-bottom: 15px; }
+    .advantage-item h4 { font-size: 1.1rem; color: var(--dark-blue); margin-bottom: 8px; }
+    .advantage-item p { font-size: 0.95rem; color: #555; }
+
+    /* ---------- Наши работы (Портфолио) ---------- */
+    .works { padding: 70px 0; background: var(--white); }
+    .works-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    .work-card { background: var(--dark-blue); border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
+    .work-images { display: grid; grid-template-columns: 1fr; gap: 2px; height: 200px; }
+    .work-images.multi { grid-template-columns: 1fr 1fr 1fr; }
+    .work-images img { width: 100%; height: 100%; object-fit: cover; }
+    .work-info { padding: 25px; color: var(--white); flex-grow: 1; display: flex; flex-direction: column; }
+    .work-info h3 { color: var(--gold); margin-bottom: 15px; font-size: 1.3rem; }
+    .work-info ul { list-style: none; line-height: 1.8; font-size: 0.95rem; opacity: 0.9; }
+    .work-info p { font-size: 0.95rem; margin-bottom: 15px; opacity: 0.9; }
+
+    /* ---------- Контакты и форма ---------- */
+    .contact-section { padding: 70px 0; background: var(--dark-blue); color: var(--white); text-align: center; }
+    .contact-section h2 { font-size: 2.2rem; margin-bottom: 20px; }
+    .contact-section h2 .gold { color: var(--gold); }
+    .contact-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin: 30px 0 40px; }
+    .contact-info .item { background: rgba(255,255,255,0.08); padding: 20px 30px; border-radius: 16px; min-width: 220px; border-left: 4px solid var(--gold); }
+    .contact-info .item .label { font-size: 0.9rem; opacity: 0.7; }
+    .contact-info .item .value { font-size: 1.2rem; font-weight: 600; margin-top: 5px; }
+    .contact-info .item .value a { color: var(--gold); text-decoration: none; }
+    
+    .quick-form { margin-top: 40px; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; max-width: 550px; margin-left: auto; margin-right: auto; }
+    .quick-form h3 { margin-bottom: 15px; font-size: 1.5rem; }
+    .quick-form input, .quick-form textarea { width: 100%; padding: 14px 18px; margin-bottom: 15px; border: none; border-radius: 30px; font-size: 1rem; outline: none; background: #fff; color: #333; font-family: inherit; }
+    .quick-form textarea { border-radius: 16px; resize: vertical; min-height: 80px; }
+    .quick-form button { width: 100%; padding: 14px; background: var(--gold); color: var(--dark-blue); border: none; border-radius: 30px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: 0.3s; font-family: inherit; }
+    .quick-form button:hover { background: var(--gold-light); transform: scale(1.02); }
+    .form-success { display: none; background: rgba(46, 204, 113, 0.15); border: 2px solid #2ecc71; color: #2ecc71; padding: 15px; border-radius: 30px; font-weight: 600; margin-top: 15px; }
+    .form-success.show { display: block; }
+
+    /* ---------- Подвал ---------- */
+    .footer { background: #071126; color: #aaa; text-align: center; padding: 25px 0; font-size: 0.9rem; }
+    .footer a { color: var(--gold); text-decoration: none; }
+
+    /* ---------- Плавающая кнопка звонка ---------- */
+    .floating-call { display: none; position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; text-align: center; font-size: 30px; line-height: 60px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; text-decoration: none; transition: 0.3s; }
+    .floating-call:hover { transform: scale(1.1); background: #1ebe5c; }
+
+    /* ---------- Адаптивность ---------- */
+    @media (max-width: 768px) {
+      .header .container { flex-direction: column; gap: 10px; }
+      .hero h1 { font-size: 2rem; }
+      .section-title { font-size: 1.8rem; }
+      .hero .hero-buttons { flex-direction: column; }
+      .hero .btn-primary, .hero .btn-secondary { width: 100%; }
+      .contact-info { flex-direction: column; align-items: center; }
+      .contact-info .item { width: 100%; max-width: 300px; }
+      .floating-call { display: block; } /* Показываем кнопку только на мобильных */
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== ШАПКА ========== -->
+<header class="header">
+  <div class="container">
+    <a href="#" class="logo">АВТО<span>МАСТЕРСКАЯ</span></a>
+    <div class="header-contacts">
+      <a href="tel:89091122722" class="header-phone">📞 8-909-112-27-22</a>
+      <a href="https://wa.me/79091122722" target="_blank" class="btn-whatsapp">💬 WhatsApp</a>
+      <a href="#callback" class="btn-call">Записаться</a>
+    </div>
+  </div>
+</header>
+
+<!-- ========== ГЛАВНЫЙ ЭКРАН ========== -->
+<section class="hero">
+  <div class="container">
+    <h1>Автомастерская <span class="gold">в Лысьве</span></h1>
+    <p>Ремонт, диагностика и обслуживание автомобилей любой сложности.<br>Работаем с 8:00 до 18:00 (ПН–ПТ), суббота и воскресенье — выходной.</p>
+    <div class="hero-buttons">
+      <a href="tel:89091122722" class="btn-primary">📞 Позвонить</a>
+      <a href="https://wa.me/79091122722" target="_blank" class="btn-secondary">💬 Написать в WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== УСЛУГИ ========== -->
+<section class="services" id="services">
+  <div class="container">
+    <h2 class="section-title">Наши <span class="gold">услуги</span></h2>
+    <p class="section-subtitle">Всё для вашего автомобиля в одном месте — от диагностики до сложного ремонта и тюнинга</p>
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-icon">🔍</div>
+        <h3>Комплексная диагностика</h3>
+        <p>Включая эндоскопическую проверку двигателя камерой высокого разрешения</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">💻</div>
+        <h3>Компьютерная диагностика</h3>
+        <p>Быстрое выявление ошибок и неисправностей электронных систем</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">🛢️</div>
+        <h3>Замена масла и жидкостей</h3>
+        <p>Моторное, трансмиссионное, тормозная жидкость — все виды замен</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">🔧</div>
+        <h3>Ремонт и ТО</h3>
+        <p>Ходовая, двигатель, трансмиссия, тормозная система — любой ремонт</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">❄️</div>
+        <h3>Заправка кондиционеров</h3>
+        <p>Качественная заправка фреоном с проверкой герметичности</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">⚡</div>
+        <h3>Ремонт генераторов и стартеров</h3>
+        <p>Замена колец, реле-регулятора, подшипников и обгонных муфт</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">📱</div>
+        <h3>Автоэлектрика</h3>
+        <p>Активация CarPlay/Android Auto, установка камер заднего вида</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">🛡️</div>
+        <h3>Антикоррозийная обработка</h3>
+        <p>Надёжная защита кузова от ржавчины на долгие годы</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">📡</div>
+        <h3>Охранные системы</h3>
+        <p>Установка сигнализаций Pandora и StarLine с автозапуском</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">💡</div>
+        <h3>Тюнинг и доп. оборудование</h3>
+        <p>Установка LED-балок, кофров и обвесов на любую технику</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">⛽</div>
+        <h3>Чистка форсунок</h3>
+        <p>Профессиональная очистка топливных форсунок для экономии топлива</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">🧩</div>
+        <h3>Запчасти «под ключ»</h3>
+        <p>Подбор и заказ деталей с установкой у нас — экономьте время</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ПРЕИМУЩЕСТВА ========== -->
+<section class="advantages" id="advantages">
+  <div class="container">
+    <h2 class="section-title">Почему <span class="gold">выбирают нас</span></h2>
+    <p class="section-subtitle">Мы ценим ваше время и деньги</p>
+    <div class="advantages-grid">
+      <div class="advantage-item">
+        <span class="icon">⏰</span>
+        <h4>Работаем по графику</h4>
+        <p>ПН–ПТ с 8:00 до 18:00, выходные — суббота, воскресенье</p>
+      </div>
+      <div class="advantage-item">
+        <span class="icon">💳</span>
+        <h4>Удобная оплата</h4>
+        <p>Наличные, карты МИР, Visa, MasterCard, безналичный расчёт для юрлиц</p>
+      </div>
+      <div class="advantage-item">
+        <span class="icon">🔩</span>
+        <h4>Современное оборудование</h4>
+        <p>Эндоскоп, компьютерная диагностика, профессиональный инструмент</p>
+      </div>
+      <div class="advantage-item">
+        <span class="icon">🧾</span>
+        <h4>Запчасти под заказ</h4>
+        <p>Подберём оригинал или качественный аналог, установим с гарантией</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== НАШИ РАБОТЫ ========== -->
+<section class="works" id="works">
+  <div class="container">
+    <h2 class="section-title">Примеры <span class="gold">наших работ</span></h2>
+    <p class="section-subtitle">Нам доверяют ремонт и тюнинг как легковых автомобилей, так и внедорожной техники</p>
+    
+    <div class="works-grid">
+      
+      <!-- 1. Pandora -->
+      <div class="work-card">
+        <div class="work-images">
+          <img src="pandora.jpg" alt="Установка сигнализации Pandora">
+        </div>
+        <div class="work-info">
+          <h3>Охранные системы Pandora</h3>
+          <p>Телеметрические системы с GPS и управлением со смартфона. Выбирай лучшее!</p>
+        </div>
+      </div>
+
+      <!-- 2. StarLine -->
+      <div class="work-card">
+        <div class="work-images">
+          <img src="starline.jpg" alt="Установка сигнализации StarLine">
+        </div>
+        <div class="work-info">
+          <h3>Охранные системы StarLine</h3>
+          <p>Автозапуск, контроль температуры в салоне и полная защита от угона. Умный комфорт!</p>
+        </div>
+      </div>
+
+      <!-- 3. Оплата Сбербанк -->
+      <div class="work-card">
+        <div class="work-images">
+          <img src="terminal.jpg" alt="Терминал оплаты Сбербанк">
+        </div>
+        <div class="work-info">
+          <h3>Удобная оплата</h3>
+          <p>Принимаем к оплате карты МИР, VISA, MasterCard, а также бесконтактную оплату с телефона.</p>
+        </div>
+      </div>
+
+      <!-- 4. Квадроцикл Сокол -->
+      <div class="work-card">
+        <div class="work-images multi">
+          <img src="sokol1.jpg" alt="LED-балка на квадроцикле Сокол">
+          <img src="sokol2.jpg" alt="Тюнинг квадроцикла Сокол">
+        </div>
+        <div class="work-info">
+          <h3>Тюнинг квадроцикла «Сокол»</h3>
+          <ul>
+            <li>✅ Установка мощной LED-балки</li>
+            <li>⚙️ Подключение доп. освещения</li>
+            <li>🔧 Монтаж силового обвеса</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 5. Lada Vesta NG -->
+      <div class="work-card">
+        <div class="work-images multi">
+          <img src="vesta.jpg" alt="Lada Vesta NG">
+          <img src="carplay.jpg" alt="Активация CarPlay">
+          <img src="camera.jpg" alt="Камера заднего вида">
+        </div>
+        <div class="work-info">
+          <h3>Lada Vesta NG</h3>
+          <ul>
+            <li>✅ Активация Android Auto / Apple CarPlay</li>
+            <li>✅ Активация кнопки открытия багажника</li>
+            <li>✅ Установка камеры заднего вида</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 6. Генератор VW Polo -->
+      <div class="work-card">
+        <div class="work-images multi">
+          <img src="generator1.jpg" alt="Старые кольца генератора">
+          <img src="generator2.jpg" alt="Новые кольца генератора">
+          <img src="generator3.jpg" alt="Замена реле-регулятора Bosch">
+        </div>
+        <div class="work-info">
+          <h3>Ремонт генератора VW Polo</h3>
+          <ul>
+            <li>⚙️ Замена токосъемных колец</li>
+            <li>⚙️ Замена реле-регулятора Bosch</li>
+            <li>⚙️ Замена подшипников и обгонной муфты</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 7. Renault Duster -->
+      <div class="work-card">
+        <div class="work-images multi">
+          <img src="duster1.jpg" alt="Renault Duster на подъемнике">
+          <img src="duster2.jpg" alt="Осмотр защиты ДВС">
+          <img src="duster3.jpg" alt="Замена подушки двигателя">
+        </div>
+        <div class="work-info">
+          <h3>Renault Duster: вибрация</h3>
+          <ul>
+            <li>✅ Замена задней подушки ДВС</li>
+            <li>✅ Восстановление резьбы крепежа</li>
+            <li>✅ Надежное крепление защиты ДВС</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 8. Renault Logan -->
+      <div class="work-card">
+        <div class="work-images multi">
+          <img src="logan1.jpg" alt="Renault Logan">
+          <img src="logan2.jpg" alt="Панель управления Logan">
+          <img src="logan3.jpg" alt="Замена лампочки в кнопке">
+        </div>
+        <div class="work-info">
+          <h3>Renault Logan: подсветка</h3>
+          <ul>
+            <li>✅ Замена ламп подсветки управления</li>
+            <li>⚙️ Восстановление подсветки кнопок</li>
+            <li>⚙️ Ремонт мелких электронных узлов</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== КОНТАКТЫ И ЗАПИСЬ ========== -->
+<section class="contact-section" id="callback">
+  <div class="container">
+    <h2>Свяжитесь с <span class="gold">нами</span></h2>
+    <p style="opacity:0.9; max-width:600px; margin:0 auto 30px;">Звоните, пишите или оставьте заявку — мы перезвоним в рабочее время</p>
+
+    <div class="contact-info">
+      <div class="item">
+        <div class="label">📍 Адрес</div>
+        <div class="value">г. Лысьва, ул. Орджоникидзе, 22г</div>
+      </div>
+      <div class="item">
+        <div class="label">📞 Телефон</div>
+        <div class="value"><a href="tel:89091122722">8-909-112-27-22</a></div>
+      </div>
+      <div class="item">
+        <div class="label">🕐 Режим работы</div>
+        <div class="value">ПН–ПТ 8:00 – 18:00<br>СБ–ВС выходной</div>
+      </div>
+    </div>
+
+    <div class="quick-form">
+      <h3>📝 Оставьте заявку</h3>
+      <p style="font-size:0.95rem; opacity:0.8; margin-bottom:15px;">Мы перезвоним вам в течение 15 минут в рабочее время</p>
+      
+      <form id="callbackForm">
+        <input type="text" placeholder="Ваше имя" id="name" name="name" required>
+        <input type="tel" placeholder="Номер телефона" id="phone" name="phone" required>
+        <textarea placeholder="Кратко опишите проблему или модель авто" id="message" name="message" rows="3"></textarea>
+        <button type="submit" id="submitBtn">Отправить заявку</button>
+      </form>
+      
+      <div id="formStatus" class="form-success"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== ПОДВАЛ ========== -->
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 Автомастерская г. Лысьва. Все права защищены.</p>
+    <p style="margin-top:5px;">ул. Орджоникидзе, 22г | <a href="tel:89091122722">8-909-112-27-22</a></p>
+  </div>
+</footer>
+
+<!-- Плавающая кнопка звонка (для мобильных) -->
+<a href="tel:89091122722" class="floating-call">📞</a>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+  // ========== НАСТРОЙКА FORMPREE ==========
+  // ВСТАВЬТЕ СЮДА ВАШ УНИКАЛЬНЫЙ URL ОТ FORMPREE
+  const FORM_URL = 'https://formspree.io/f/ваш_ключ'; // ЗАМЕНИТЕ НА РЕАЛЬНЫЙ
+
+  const form = document.getElementById('callbackForm');
+  const statusDiv = document.getElementById('formStatus');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get('name'),
+      phone: formData.get('phone'),
+      message: formData.get('message') || '—'
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправка...';
+
+    try {
+      const response = await fetch(FORM_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        statusDiv.textContent = '✅ Спасибо! Мы свяжемся с вами в ближайшее время.';
+        statusDiv.className = 'form-success show';
+        form.reset();
+      } else {
+        statusDiv.textContent = '❌ Что-то пошло не так. Попробуйте позвонить нам по телефону.';
+        statusDiv.className = 'form-success show';
+        statusDiv.style.borderColor = '#e74c3c';
+        statusDiv.style.color = '#e74c3c';
+      }
+    } catch (error) {
+      statusDiv.textContent = '❌ Ошибка соединения. Проверьте интернет или позвоните нам.';
+      statusDiv.className = 'form-success show';
+      statusDiv.style.borderColor = '#e74c3c';
+      statusDiv.style.color = '#e74c3c';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Отправить заявку';
+    }
+  });
+
+  // Плавная прокрутка
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
